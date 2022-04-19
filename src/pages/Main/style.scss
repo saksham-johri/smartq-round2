@@ -1,0 +1,47 @@
+.main-wrapper {
+	display: flex;
+	height: 100%;
+
+	.main-container {
+		width: 100%;
+		background-image: url('https://images.unsplash.com/photo-1593819467694-f0bd57744f14?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		padding: 1.5rem;
+
+		.food-list {
+			display: grid;
+			grid-template-columns: repeat(6, 1fr);
+			gap: 1.5rem;
+
+			.food-item {
+				background-color: green;
+				height: 6rem;
+				border-radius: 0.25rem;
+				color: white;
+				padding: 0.5rem;
+				cursor: pointer;
+				width: 100%;
+				text-align: center;
+				font-size: 0.75rem;
+				overflow: hidden;
+				display: grid;
+				place-items: center;
+				transition-duration: 250ms;
+
+				p {
+					display: -webkit-box;
+					-webkit-line-clamp: 6;
+					-webkit-box-orient: vertical;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+
+				&:hover {
+					transform: scale(1.2);
+				}
+			}
+		}
+	}
+}

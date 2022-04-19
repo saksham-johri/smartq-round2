@@ -1,0 +1,35 @@
+.sidebar {
+	min-height: calc(100vh - 3rem);
+	background-color: white;
+	width: 10rem;
+  overflow: hidden;
+
+	.container {
+		display: grid;
+		gap: 2rem;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+
+		.item {
+			padding: 1rem 0.75rem;
+			width: 100%;
+			overflow: hidden;
+			cursor: pointer;
+			transition-duration: 300ms;
+
+			&:hover {
+				transform: scale(1.05);
+			}
+
+			&.selected {
+				background-color: goldenrod;
+			}
+
+			p {
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+		}
+	}
+}
