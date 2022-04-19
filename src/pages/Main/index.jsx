@@ -12,6 +12,7 @@ const Main = () => {
 	const [menu, setMenu] = useState([]);
 	const [selectedCache, setSelectedCache] = useState({});
 	const [selectedItems, setSelectedItems] = useState([]);
+	const [searchText, setSearchText] = useState('');
 
 	useEffect(() => {
 		setMenu(getMenu(selectedResturant));
@@ -60,7 +61,7 @@ const Main = () => {
 
 	return (
 		<div>
-			<Header />
+			<Header searchText={searchText} setSearchText={setSearchText} />
 
 			<div className='main-wrapper'>
 				<Sidebar
@@ -70,26 +71,32 @@ const Main = () => {
 
 				<div className='main-container'>
 					<div className='food-list'>
-						{menu?.map((item, index) => {
-							const { foodname, outofstock = false } = item || {};
+						{menu
+							?.filter(({ foodname }) =>
+								foodname
+									?.toLocaleLowerCase()
+									?.includes(searchText.toLocaleLowerCase())
+							)
+							?.map((item, index) => {
+								const { foodname } = item || {};
 
-							return (
-								<div
-									key={index}
-									role='button'
-									tabIndex={0}
-									onKeyDown={() => {}}
-									onClick={() => onClick(item)}
-									className='food-item'
-									style={{
-										backgroundColor: selectedItems?.includes(item)
-											? 'red'
-											: null,
-									}}>
-									<p>{foodname}</p>
-								</div>
-							);
-						})}
+								return (
+									<div
+										key={index}
+										role='button'
+										tabIndex={0}
+										onKeyDown={() => {}}
+										onClick={() => onClick(item)}
+										className='food-item'
+										style={{
+											backgroundColor: selectedItems?.includes(item)
+												? 'red'
+												: null,
+										}}>
+										<p>{foodname}</p>
+									</div>
+								);
+							})}
 					</div>
 				</div>
 			</div>

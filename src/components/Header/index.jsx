@@ -1,9 +1,14 @@
 import './style.scss';
 
-const Header = () => {
+const Header = ({ searchText, setSearchText }) => {
 	return (
 		<header className='header'>
-			<input className='input' placeholder='Search' />
+			<input
+				value={searchText}
+				onChange={({ target: { value } }) => setSearchText(value)}
+				className='input'
+				placeholder='Search'
+			/>
 		</header>
 	);
 };
